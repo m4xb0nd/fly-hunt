@@ -1,0 +1,10 @@
+.catch-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.catch-list__empty {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+}

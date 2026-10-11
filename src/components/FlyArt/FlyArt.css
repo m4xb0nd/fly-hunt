@@ -1,0 +1,100 @@
+/* Цвета мухи задаются переменными: обычная и золотая отличаются только ими */
+.fly-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.fly-art--normal {
+  --fly-body: #3b3226;
+  --fly-thorax: #5a4b39;
+  --fly-wing: rgba(220, 235, 255, 0.5);
+  --fly-wing-edge: rgba(255, 255, 255, 0.85);
+  --fly-eye: #e5484d;
+  --fly-splat: #4a2f1b;
+}
+
+.fly-art--golden {
+  --fly-body: #ffb830;
+  --fly-thorax: #ffd766;
+  --fly-wing: rgba(255, 246, 200, 0.55);
+  --fly-wing-edge: #ffe27a;
+  --fly-eye: #7a4300;
+  --fly-splat: #e9a21e;
+}
+
+.fly-art__wing {
+  fill: var(--fly-wing);
+  stroke: var(--fly-wing-edge);
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: flutter 0.09s ease-in-out infinite alternate;
+}
+
+.fly-art__wing--back {
+  animation-delay: 0.045s;
+}
+
+.fly-art__abdomen,
+.fly-art__head {
+  fill: var(--fly-body);
+}
+
+.fly-art__thorax {
+  fill: var(--fly-thorax);
+}
+
+.fly-art__eye {
+  fill: var(--fly-eye);
+}
+
+.fly-art__splat {
+  fill: var(--fly-splat);
+}
+
+/* Искры: лучи разлетаются от центра и гаснут за 0.8 с */
+.fly-sparks__ray {
+  stroke: #ffc847;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: 32px 32px;
+  animation: spark-burst 0.8s ease-out forwards;
+}
+
+@keyframes spark-burst {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fly-sparks__ray {
+    animation-duration: 0.01s;
+  }
+}
+
+@keyframes flutter {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fly-art__wing {
+    animation: none;
+  }
+}

@@ -1,0 +1,237 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Верхняя полоса, как в игре: слева кнопка выхода, справа очки */
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 8px 18px;
+  background: var(--sky);
+  border-bottom: 2px solid var(--ink);
+}
+
+.hud__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px 30px;
+}
+
+.hud__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.hud__label {
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.hud__value {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Очки - самое крупное число, как счёт в Doodle Jump */
+.hud__stat--score .hud__value {
+  font-size: 3.2rem;
+}
+
+.hud__hint {
+  font-size: 1rem;
+  color: #b06a00;
+}
+
+.game__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Поле - тетрадный лист в клетку, по нему прыгают мухи */
+.game__field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* Затемнение заменяем светлой дымкой листа, чтобы поверх было видно клетки */
+.game__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(252, 246, 240, 0.72);
+  text-align: center;
+}
+
+/* Не перехватывает клики: во время отсчёта по полю всё ещё можно кликать */
+.game__overlay--passive {
+  pointer-events: none;
+}
+
+.countdown {
+  display: block;
+  font-size: clamp(8rem, 26vw, 14rem);
+  line-height: 1;
+  color: var(--red);
+  animation: count-pop 0.9s ease-out both;
+}
+
+.countdown__hint {
+  font-size: 2rem;
+  color: var(--ink);
+}
+
+/* Всплывающие надписи: "+10", "мимо" и т.п. */
+.popup {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 1.9rem;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--green-dark);
+  text-shadow:
+    0 0 4px var(--paper),
+    0 0 2px var(--paper);
+  pointer-events: none;
+  animation: popup-rise 0.7s ease-out forwards;
+}
+
+.popup--gold {
+  font-size: 2.6rem;
+  color: var(--orange);
+}
+
+.popup--miss {
+  font-size: 1.5rem;
+  color: var(--red);
+}
+
+/* Итоги раунда - листок с рамкой */
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: min(440px, 100%);
+  padding: 26px 26px 30px;
+  background: var(--white);
+  animation: panel-in 0.35s ease-out both;
+}
+
+.results__title {
+  font-size: 2.4rem;
+}
+
+.results__title .marker {
+  padding: 0 10px;
+}
+
+.results__score {
+  margin-top: 8px;
+  font-size: 6rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.results__label {
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+
+.results__record {
+  font-size: 1.3rem;
+}
+
+.results__grid {
+  width: 100%;
+  margin: 14px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.results__grid > div {
+  padding: 8px 10px;
+  border: 1.5px dashed var(--ink-soft);
+  border-radius: 12px;
+}
+
+.results__grid dt {
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.results__grid dd {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+
+.results__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+@keyframes count-pop {
+  from {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popup-rise {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  15% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150%) scale(1);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
