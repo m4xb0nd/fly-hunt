@@ -1,0 +1,60 @@
+.catch-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
+  background: var(--white);
+}
+
+/* Золотая муха - листок с жёлтым маркером */
+.catch-card--golden {
+  background: #fff6cf;
+}
+
+.catch-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.catch-card__name {
+  font-size: 1.4rem;
+}
+
+.catch-card__badge {
+  padding: 0 10px;
+  background: var(--yellow);
+  font-size: 0.95rem;
+}
+
+.catch-card__notes {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.catch-card__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.catch-card__stats dt {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.catch-card__stats dd {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.catch-card__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1.5px dashed var(--ink-soft);
+  font-size: 1rem;
+  color: var(--ink-soft);
+}

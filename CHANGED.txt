@@ -1,0 +1,13 @@
+ЛР3: навигация. Заменить/добавить файлы по путям:
+package.json
+src/main.tsx
+src/App.tsx
+src/components/Layout/Layout.tsx
+src/components/Header/Header.tsx
+src/components/Header/Header.css
+src/pages/Home/Home.tsx
+src/pages/Game/Game.tsx
+src/pages/Catches/Catches.tsx
+src/pages/NotFound/NotFound.tsx
+src/pages/Page.css
+Потом: npm install (подтянет react-router-dom), npm run build.

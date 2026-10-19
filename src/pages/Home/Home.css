@@ -1,0 +1,107 @@
+.home {
+  min-height: 100vh;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 40px 20px 64px;
+  text-align: center;
+}
+
+/* Заголовок с платформами вокруг, как на стартовом экране игры */
+.menu__hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 680px;
+  min-height: 360px;
+  padding-top: 24px;
+  justify-content: center;
+}
+
+.menu__fly {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  animation: jump 1.6s ease-in-out infinite;
+}
+
+.menu__title {
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  line-height: 1.15;
+}
+
+.menu__lead {
+  max-width: 540px;
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+}
+
+.menu__hero .btn {
+  margin-top: 8px;
+}
+
+.menu__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 22px;
+  width: 100%;
+  max-width: 760px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 18px 16px;
+  background: var(--white);
+}
+
+.stat-card__value {
+  font-size: 2.6rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card__label {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.menu__history {
+  width: 100%;
+  max-width: 1000px;
+  text-align: left;
+}
+
+.menu__history h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.menu__loading {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-36px) rotate(6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu__fly {
+    animation: none;
+  }
+}

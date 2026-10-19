@@ -1,0 +1,60 @@
+/* Шапка не липкая: при прокрутке она уезжает вместе с контентом, и мухи не уходят под неё */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 10px 24px;
+  background: var(--sky);
+  border-bottom: 2px solid var(--ink);
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 1.7rem;
+  text-decoration: none;
+}
+
+.header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nav__link {
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: var(--ink);
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  background: var(--white);
+}
+
+.nav__link:focus-visible {
+  outline: 3px dashed var(--focus);
+  outline-offset: 2px;
+}
+
+/* Текущий раздел выделен жёлтым маркером с карандашной рамкой */
+.nav__link--active {
+  background: var(--yellow);
+  box-shadow: 0 0 0 1.5px var(--ink);
+}
+
+.header__icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+@media (max-width: 520px) {
+  .header__brand {
+    font-size: 1.4rem;
+  }
+}
